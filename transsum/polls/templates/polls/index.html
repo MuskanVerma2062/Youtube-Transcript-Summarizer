@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <title>
+            Youtube | Transcript | Summarizer
+        </title>
+        <style>
+            body {
+                text-align: center;
+                background-color: rgb(56, 182, 204);
+                margin: 30px;
+                height: auto;
+                width: 400px;
+                color: black;
+                /* background-image: url("https://images.unsplash.com/photo-1631989761749-d424e501b2d1?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIyOXw2c01WalRMU2tlUXx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"); */
+                background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLt0nEKf7c3AOSuqjtX4euE1o1Kv1SEAiyUQ&usqp=CAU");
+                background-repeat: no-repeat;
+                background-size: cover;
+                border-radius: 5px;
+            }
+            .container{
+                margin-top: 30px;
+            }
+            .bar {
+                text-align: center;
+                color: black;
+                font-size: 25px;
+                font-family: 'Questrial', sans-serif;
+            }
+            .bar h1 {
+                border-bottom: black bold 10px;
+            }
+            .utubeurl{
+                margin-top: 30px;   
+                font-size: 25px; 
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                text-align: center;
+            }
+            .utubeurl input, p{
+                background-color: rgba(0, 0, 0, 0);
+                margin-top: 20px;
+                width: 250px;
+                height: 40px;
+                color: rgb(0, 0, 0);
+                font-size: 25px;
+                border-radius: 10px;
+            }
+            .btn{
+                margin-top: 30px;
+            }
+            .btn input{
+                background-color: black;
+                height: 50px;
+                width: 250px;
+                font-size: 25px;
+                color: whitesmoke;
+                border-radius: 10px;
+            }
+            #content {
+                margin-top: 10px;
+                font-size: 25px;
+                text-align: center;
+            }
+
+
+        </style>
+        <!-- <link href='./index.css' rel='stylesheet' type='text/css'> -->
+    </head>
+    <body>
+        <div class='container' id='main'>
+            <div class='bar'>
+                <h1> Youtube Transcript Summarizer </h1>
+            </div>
+            <div class='utubeurl'>
+                <label>Enter video link</label>
+                <br>
+                <input type='text' name='url' id='url'> 
+            </div>
+            <div id='content'>
+                
+            </div>
+            <div class='btn'>
+                <input id='sum-btn' type='button' value='Create Summary'>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+        <script>
+            var btn1 = document.getElementById('sum-btn');
+            var div1 = document.getElementById('content');
+
+            btn1.addEventListener("click",function(){
+                btn1.setAttribute("style","visibility:hidden");
+                let data = new FormData();
+                data.append("url",document.getElementById('url').value)
+                data.append("csrfmiddlewaretoken", '{{csrf_token}}')
+                var p = document.createElement('label');
+                p.innerText = "Loading...";
+                setTimeout(function(){
+                    p.innerText += "\nPlease Wait ...\nIt may take few seconds ....."
+                },5000)
+                p.setAttribute('id','loadding')
+                div1.appendChild(p);
+
+                axios.post('create_summary/', data) 
+                .then(res => showSummary(Object.values(res)[0])) 
+                .catch(errors => console.log(errors))
+                
+            });
+
+            function showSummary(res){
+                div1.removeChild(document.getElementById('loadding'))
+                var p = document.createElement('label');
+                p.innerText = res.summ;//.substring(17,2017);
+                // p.innerText = 'The summarizer is a Chrome extension that works with YouTube to extract the key points of a video and make them accessible to the user.There are large number of videos on youtube for every particular topic. It is not neccessary that each video will contain the information that you needed. So in order to save time firstly we can read the summary of video using this chrome extension and then we can decide whether to watch it or not, in order to save time.';
+                // div1.appendChild(document.createElement('center'));
+                div1.appendChild(p);
+                
+            }
+
+        </script>
+    </body>
+</html>

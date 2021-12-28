@@ -1,0 +1,56 @@
+body {
+    text-align: center;
+    background-color: black;
+    margin: 30px;
+    height: auto;
+    width: 400px;
+    color: black;
+    background-image: url("https://images.unsplash.com/photo-1631989761749-d424e501b2d1?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIyOXw2c01WalRMU2tlUXx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+}
+.container{
+    margin-top: 30px;
+}
+.bar {
+    text-align: center;
+    color: black;
+    font-size: 25px;
+    font-family: 'Questrial', sans-serif;
+}
+.bar h1 {
+    border-bottom: black bold 10px;
+}
+.utubeurl{
+    margin-top: 30px;   
+    font-size: 25px; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+.utubeurl input, p{
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 20px;
+    width: 250px;
+    height: 40px;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    border-radius: 10px;
+}
+.btn{
+    margin-top: 30px;
+}
+.btn input{
+    background-color: black;
+    height: 50px;
+    width: 250px;
+    font-size: 25px;
+    color: whitesmoke;
+    border-radius: 10px;
+}
+#content {
+    margin-top: 10px;
+    font-size: 25px;
+    text-align: center;
+}
+
