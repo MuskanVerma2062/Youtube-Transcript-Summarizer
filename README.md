@@ -1,5 +1,5 @@
 # **Youtube Transcript Summarizer**
-***Objective:*** This is a Search Engine Extension which will make a request to a backend [REST API](https://www.redhat.com/en/topics/api/what-is-a-rest-api) where it will perform NLP and respond with a summarized version of a YouTube transcript.
+***Objective:*** This project is a chrome/search engine extension that works with Youtube to extract the key points where it will perform NLP and respond with the summarized version of the Youtube transcript
 
 <img src = "https://user-images.githubusercontent.com/61617780/147524542-598a381c-9cff-49e1-b35b-75b38574b312.png" width="570" height="140">
 
